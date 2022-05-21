@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ethers, BigNumber} from 'ethers';
 import kjNFT from './KJNFT.json';
+import { Flex, Image, Link, Box, Button } from '@chakra-ui/react'
 
 const kjNFTAddress = process.env.REACT_APP_ADDRESS;
 
@@ -42,16 +43,22 @@ const MainMint = ({accounts, setAccounts}) => {
     return (
         <div>
             <h1 >KJ NFTs</h1>
-            <p>Welcome to KJ NFTs. A working demo for Login with Unstoppable Domains</p>
+            <h3>Welcome to KJ NFTs. A working demo for Login with Unstoppable Domains</h3>
             {isConnected ? (
-                <div>
+                <Flex
+                    justify="space-around"
+                    align="center"
+                    width="100%"
+                    padding="20px">
                     <div>
-                        <button onClick={handleDecrement}>-</button>
-                        <input type="number" value={mintAmount}/>
-                        <button onClick={handleIncrement}>+</button>
+                        <div>
+                            <button class="round_button" onClick={handleDecrement}>-</button>
+                            <input type="number" value={mintAmount}/>
+                            <button class="round_button" onClick={handleIncrement}>+</button>
+                        </div>
+                        <a class="button instagram" padding="15px" onClick={handleMint}><span class="gradient"></span>Mint Now</a>
                     </div>
-                    <button onClick={handleMint}>Mint Now</button>
-                </div>
+                </Flex>
             ) : (
                 <p>You must be connected to mint</p>
             )}
